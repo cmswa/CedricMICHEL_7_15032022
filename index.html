@@ -21,21 +21,19 @@
 
         <main>
             <section class="searchArea">
-                <div class="searchBar container d-flex justify-content-between">
-                    <input
-                    class="searchBar__input form-control" type="search" name="recherche" id="recherche" placeholder="Rechercher une recette">
-                    <!-- <label for="exampleDataList" class="form-label"></label>
-                                        <input class="form-control" list="datalistOptions" name="recherche" id="recherche" placeholder="Rechercher une recette">
-                                        <datalist id="datalistOptions">
-                                            <option value="San Francisco"></option>
-                                            <option value="New York"></option>
-                                            <option value="Seattle"></option>
-                                            <option value="Los Angeles"></option>
-                                            <option value="Chicago"></option>
-                                        </datalist> -->
-                    <button class="searchBar__button btn btn-link">
-                        <i class="fas fa-search"></i>
-                    </button>
+                <div
+                    class="searchBar container d-flex justify-content-between">
+                    <!-- <input
+                                        class="searchBar__input form-control" type="search" name="recherche" id="recherche" placeholder="Rechercher une recette"> -->
+                    <div class="input-group input-group-lg">
+                        <input class="searchBar__input form-control" type="search" name="recherche" id="recherche" placeholder="Rechercher une recette">
+                        <span class="input-group-text fa-stack fa-lg" id="inputGroup-sizing-lg">
+                            <i class="fa fa-search fa-stack-1x"></i>
+                          </span>
+                    </div>
+                    <!-- <button class="searchBar__button btn btn-link">
+                                            <i class="fas fa-search"></i>
+                                        </button> -->
                 </div>
             </section>
 
@@ -46,8 +44,17 @@
                             <div class="card ">
                                 <img src="..." class="card-img-top" alt="...">
                                 <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <div class="card-body__header d-flex justify-content-between mb-2">
+                                        <h5 id="cardTitle" class="card-title mb-0">Card title</h5>
+                                        <div class="card-body__times d-flex align-items-center">
+                                            <i class="far fa-clock" aria-hidden="true"></i>
+                                            <p id="cardDuration" class="card-text">10min</p>
+                                        </div>
+                                    </div>
+                                    <div class="card-text card-body__content d-flex justify-content-between">
+                                        <div id="cardRecipe" class="card-text card-body__recipe"></div>
+                                        <p id="cardDescription" class="card-text card-body__description">Some example text. Some example text.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
