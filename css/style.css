@@ -1,0 +1,23 @@
+.logo__image {
+    width: 25%;
+}
+
+.jumbotron.text-center {
+    padding-bottom: 0;
+    background-color: white;
+    margin: 2em 0 1em;
+}
+
+.card {
+    height: 364px;
+}
+
+.card-img-top {
+    height: 178px;
+    background-color: #c7bebe;
+    color: #c7bebe;
+}
+
+.recipesList {
+    margin-top: 1em;
+  }
