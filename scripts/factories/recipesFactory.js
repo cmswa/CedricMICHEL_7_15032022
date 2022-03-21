@@ -12,6 +12,10 @@ function recipesFactory(data) {
     } = data;
 
     const cardList = document.getElementById('card-list');
+
+    Array.forEach(a => {
+        const div = document.createElement('div');
+
     /*
      <div class="col">
                             <div class="card ">
@@ -67,4 +71,7 @@ function recipesFactory(data) {
 
     const cardDescriptionDOM = document.getElementById('cardDescription');
     cardDescriptionDOM.textContent = description;
+
+    cardList.append(div);
+   });
 }
