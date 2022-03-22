@@ -13,8 +13,39 @@ function recipesFactory(data) {
 
     const cardList = document.getElementById('card-list');
 
-    Array.forEach(a => {
-        const div = document.createElement('div');
+    const col = document.createElement('div');
+    col.className = 'col';
+    const card = document.createElement('div');
+    card.className = 'card';
+    const imgDOM = document.createElement('img');
+    imgDOM.className = 'card-img-top'
+    imgDOM.alt = '...';
+    imgDOM.src = '...';
+    const cardBody = document.createElement('div');
+    cardBody.className = 'card-body';
+    const cardBodyHeader = document.createElement('div');
+    cardBodyHeader.className =
+        'card-body__header d-flex justify-content-between mb-2';
+    const cardTitleDOM = document.createElement('h5');
+    cardTitleDOM.textContent = name;
+    cardTitleDOM.className = 'card-title mb-0';
+    const cardBodyTimes = document.createElement('div');
+    cardBodyTimes.className = 'card-body__times d-flex align-items-center';
+    const faClock = document.createElement('i');
+    faClock.className = 'far fa-clock';
+    const cardDurationDOM = document.createElement('p');
+    cardDurationDOM.className = 'card-text';
+    cardDurationDOM.textContent = time + 'min';
+
+    cardBodyTimes.appendChild(faClock);
+    cardBodyTimes.appendChild(cardDurationDOM);
+    cardBodyHeader.appendChild(cardTitleDOM);
+    cardBodyHeader.appendChild(cardBodyTimes);
+    cardBody.appendChild(cardBodyHeader);
+    card.appendChild(imgDOM);
+    card.appendChild(cardBody);
+    col.appendChild(card);
+    cardList.append(col);
 
     /*
      <div class="col">
@@ -35,15 +66,13 @@ function recipesFactory(data) {
                                 </div>
                             </div>
                         </div>
-                        */
-    const cardTitleDOM = document.getElementById('cardTitle');
-    cardTitleDOM.textContent = name;
-    const cardDurationDOM = document.getElementById('cardDuration');
-    cardDurationDOM.textContent = time + 'min';
-    const cardRecipeDOM = document.getElementById('cardRecipe');
+                        
+
+    const cardRecipeDOM = document.createElement('div');
 
     const listeUL = document.createElement('ul');
     listeUL.classList.add('liste');
+    console.log(ingredients);
 
     ingredients.forEach((ingredientEl) => {
         if (ingredientEl.hasOwnProperty('quantity')) {
@@ -69,9 +98,7 @@ function recipesFactory(data) {
     });
     cardRecipeDOM.appendChild(listeUL);
 
-    const cardDescriptionDOM = document.getElementById('cardDescription');
+    const cardDescriptionDOM = document.createElement('p');
     cardDescriptionDOM.textContent = description;
-
-    cardList.append(div);
-   });
+*/
 }
