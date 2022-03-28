@@ -22,10 +22,9 @@ function filteredRecipes(recipes) {
                 cardList.innerHTML =
                     'Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.';
             } else {
-                displayData(recipes);
+                // cardList.innerHTML = '';
+                displayData(result);
             }
-            cardList.innerHTML = '';
-            displayData(result);
         }
 
         if (e.target.value.length < 3) {
