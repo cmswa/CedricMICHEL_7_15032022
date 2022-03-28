@@ -10,7 +10,6 @@ async function displayData(recipes) {
     const recipesCard = document.querySelector(
         '.card-body'
     );
-
     recipes.forEach((recipe) => {
         recipesFactory(recipe)
     });
@@ -27,6 +26,7 @@ async function init() {
         // // console.log(recipe);
     })
     displayData(recipes);
+    filteredRecipes(recipes);
 }
 
 init();
