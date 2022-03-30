@@ -11,6 +11,7 @@
 #recherche {
     background: #e7e7e7;
     border: none;
+    padding: 1rem;
 }
 
 #inputGroup-sizing-lg {
@@ -80,4 +81,58 @@ li p {
 li span {
     font-weight: bold;
     margin-right: 5px;
-  }
+}
+
+.advancedSearch {
+    margin: 2.5rem;
+}
+
+.fa-angle-down {
+    color: white;
+}
+
+#inputIngredients {
+    font-size: 18px;
+    color: white;
+    background: #3282f7;
+    border: none;
+}
+
+#inputIngredients::placeholder,
+#inputAppliances::placeholder,
+#inputTools::placeholder {
+    color: white;
+    font-size: 18px;
+}
+
+#inputIngredients-icon {
+    color: white;
+    border: none;
+    background: #3282f7;
+}
+
+#inputAppliances {
+    font-size: 18px;
+    color: white;
+    background: #68d9a4;
+    border: none;
+}
+
+#inputAppliances-icon {
+    color: white;
+    border: none;
+    background: #68d9a4;
+}
+
+#inputTools {
+    font-size: 18px;
+    color: white;
+    background: #ed6454;
+    border: none;
+}
+
+#inputTools-icon {
+    color: white;
+    border: none;
+    background: #ed6454;
+}
