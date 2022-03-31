@@ -27,6 +27,7 @@ async function init() {
     })
     displayData(recipes);
     filteredRecipes(recipes);
+    listIngredients(recipes);
 }
 
 init();

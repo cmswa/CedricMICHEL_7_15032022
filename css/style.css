@@ -136,3 +136,16 @@ li span {
     border: none;
     background: #ed6454;
 }
+
+.input-group-adancedSearch{
+    height: 62px;
+    margin: 0;
+}
+
+.ingredients {
+}
+
+.chevronDown-rotate {
+    transform: rotate(180deg);
+    /* transition: all 0.3s ease-in-out; */
+}
