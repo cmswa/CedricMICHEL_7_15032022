@@ -7,11 +7,6 @@ const chevron = document.querySelector('.chevronDown');
 const listIngredientsDOM = document.getElementById('listIngredients');
 
 function listIngredients(recipes) {
-    recipes.forEach((recipe) => {
-        recipe.ingredients.forEach((ingredient) => {});
-        // // console.log(recipe);
-    });
-
     // au click input ingrédients passe à une largeur col-6
     inputIngredientsDOM.addEventListener('click', () => {
         if (advancedSearchDOM.classList.contains('col-lg-5')) {
@@ -53,5 +48,19 @@ function listIngredients(recipes) {
         } else {
             listIngredientsDOM.classList.add('off');
         }
+    });
+
+    const ul = document.createElement('ul');
+    ul.className = 'd-flex align-content-around flex-wrap row row-cols-3';
+    recipes.forEach((recipe) => {
+
+        recipe.ingredients.forEach((ingredient) => {
+
+            const li = document.createElement('li');
+            li.innerHTML = ingredient.ingredient;
+            ul.appendChild(li);
+            listIngredientsDOM.append(ul);
+        });
+        // // console.log(recipe);
     });
 }
