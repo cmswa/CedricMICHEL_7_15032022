@@ -137,7 +137,7 @@ li span {
     background: #ed6454;
 }
 
-.input-group-adancedSearch{
+.input-group-adancedSearch {
     height: 62px;
     margin: 0;
 }
@@ -148,4 +148,14 @@ li span {
 .chevronDown-rotate {
     transform: rotate(180deg);
     /* transition: all 0.3s ease-in-out; */
+}
+.off {
+    display: none;
+}
+
+#listIngredients {
+    background-color: #3282f7;
+    color: white;
+    margin-top: -1em;
+    padding: 1em 0;
 }
