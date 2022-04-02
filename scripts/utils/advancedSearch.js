@@ -50,17 +50,26 @@ function listIngredients(recipes) {
         }
     });
 
+    // application du filtrage des doublons du json
+    const { ingredients, appliances, tools } = filterArray(recipes);
+    console.log(ingredients);
     const ul = document.createElement('ul');
     ul.className = 'd-flex align-content-around flex-wrap row row-cols-3';
-    recipes.forEach((recipe) => {
-
-        recipe.ingredients.forEach((ingredient) => {
-
-            const li = document.createElement('li');
-            li.innerHTML = ingredient.ingredient;
-            ul.appendChild(li);
-            listIngredientsDOM.append(ul);
-        });
-        // // console.log(recipe);
+    ul.id = 'listIngredients__ul';
+    ingredients.forEach((ingr) => {
+        const li = document.createElement('li');
+        li.innerHTML = ingr;
+        ul.appendChild(li);
+        listIngredientsDOM.append(ul);
     });
+    // console.log(recipe);
+    // recipes.forEach((recipe) => {
+    //     recipe.ingredients.forEach((ingredient) => {
+    //         const li = document.createElement('li');
+    //         li.innerHTML = ingredient.ingredient;
+    //         ul.appendChild(li);
+    //         listIngredientsDOM.append(ul);
+    //     });
+    //     // // console.log(recipe);
+    // });
 }

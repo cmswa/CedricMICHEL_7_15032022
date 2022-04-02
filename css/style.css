@@ -159,3 +159,8 @@ li span {
     margin-top: -1em;
     padding: 1em 0;
 }
+
+#listIngredients__ul {
+    max-height: 400px;
+    overflow: auto;
+}

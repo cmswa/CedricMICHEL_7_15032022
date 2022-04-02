@@ -37,7 +37,7 @@ function filterArray(recipes) {
             ...new Set([...tools, ...recipe.ustensils.map((u) => u)]),
         ].sort();
     });
-    console.log(ingredients);
+    // console.log(ingredients);
     return { ingredients, appliances, tools };
 }
 
