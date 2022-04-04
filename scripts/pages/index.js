@@ -55,6 +55,7 @@ async function init() {
     filteredRecipes(recipes);
     filterArray(recipes);
     listIngredients(recipes);
+    listAppliances(recipes);
 }
 
 init();
