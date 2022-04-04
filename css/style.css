@@ -142,10 +142,9 @@ li span {
     margin: 0;
 }
 
-.ingredients {
-}
-
-.chevronDown-rotate {
+.chevronIngredients-rotate,
+.chevronAppliances-rotate,
+.chevronTools-rotate {
     transform: rotate(180deg);
     /* transition: all 0.3s ease-in-out; */
 }
@@ -155,6 +154,20 @@ li span {
 
 #listIngredients {
     background-color: #3282f7;
+    color: white;
+    margin-top: -1em;
+    padding: 1em 0;
+}
+
+#listAppliances {
+    background-color: #68d9a4;
+    color: white;
+    margin-top: -1em;
+    padding: 1em 0;
+}
+
+#listTools {
+    background-color: #ed6454;
     color: white;
     margin-top: -1em;
     padding: 1em 0;

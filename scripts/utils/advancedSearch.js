@@ -4,18 +4,24 @@ const appliancesAdvanced = document.querySelector('.appliances');
 const toolsAdvanced = document.querySelector('.tools');
 const advancedSearchDOM = document.querySelector('.advancedSearch');
 const chevronIngr = document.querySelector('.chevronIngredients');
+const chevronAppliances = document.querySelector('.chevronAppliances');
+const chevronTools = document.querySelector('.chevronTools');
 const listIngredientsDOM = document.getElementById('listIngredients');
 
 // Ingrédients
 function listIngredients(recipes) {
     // au click input ingrédients passe à une largeur col-6
     ingredientsInputGroup.addEventListener('click', () => {
-        // listAppliancesDOM.classList.add('off');
-        // listToolsDOM.classList.add('off');
-        // ingredientsAdvanced.classList.remove('col-6');
-        // toolsAdvanced.classList.remove('col-6');
-        // ingredientsAdvanced.classList.remove('col-2');
-      
+        //gére la widht si l'on clique d'un input à un autre input
+        listAppliancesDOM.classList.add('off');
+        listToolsDOM.classList.add('off');
+        appliancesAdvanced.classList.remove('col-6');
+        appliancesAdvanced.classList.add('col-2');
+        toolsAdvanced.classList.remove('col-6');
+        toolsAdvanced.classList.add('col-2');
+        chevronAppliances.classList.remove('chevronAppliances-rotate');
+        chevronTools.classList.remove('chevronTools-rotate');
+
         if (ingredientsAdvanced.classList.contains('col-2')) {
             ingredientsAdvanced.classList.add('col-6');
             ingredientsAdvanced.classList.remove('col-2');
@@ -23,12 +29,12 @@ function listIngredients(recipes) {
             ingredientsAdvanced.classList.remove('col-6');
             ingredientsAdvanced.classList.add('col-2');
         }
-        if (chevronIngr.classList.contains('chevronDown')) {
-            chevronIngr.classList.add('chevronDown-rotate');
-            chevronIngr.classList.remove('chevronDown');
+        if (chevronIngr.classList.contains('chevronIngredients')) {
+            chevronIngr.classList.add('chevronIngredients-rotate');
+            chevronIngr.classList.remove('chevronIngredients');
         } else {
-            chevronIngr.classList.remove('chevronDown-rotate');
-            chevronIngr.classList.add('chevronDown');
+            chevronIngr.classList.remove('chevronIngredients-rotate');
+            chevronIngr.classList.add('chevronIngredients');
         }
         //tags display none
         if (listIngredientsDOM.classList.contains('off')) {
@@ -63,87 +69,107 @@ function listIngredients(recipes) {
 }
 
 // Appareils
-// const ingredientsInputGroup = document.getElementById('ingredients');
-// const ingredientsAdvanced = document.querySelector('.ingredients');
-// const appliancesAdvanced = document.querySelector('.appliances');
-// const toolsAdvanced = document.querySelector('.tools');
-// const advancedSearchDOM = document.querySelector('.advancedSearch');
-// const chevron = document.querySelector('.chevronDown');
-// const listIngredientsDOM = document.getElementById('listIngredients');
+const appliancesInputGroup = document.getElementById('appliances');
+const listAppliancesDOM = document.getElementById('listAppliances');
+const listToolsDOM = document.getElementById('listTools');
 
-// const appliancesInputGroup = document.getElementById('appliances');
-// const listAppliancesDOM = document.getElementById('listAppliances');
-// const listToolsDOM = document.getElementById('listTools'); 
+function listAppliances(recipes) {
+    // au click input appareils passe à une largeur col-6
+    appliancesInputGroup.addEventListener('click', () => {
+        //gére la widht si l'on clique d'un input à un autre input
+        listIngredientsDOM.classList.add('off');
+        listToolsDOM.classList.add('off');
+        ingredientsAdvanced.classList.remove('col-6');
+        ingredientsAdvanced.classList.add('col-2');
+        toolsAdvanced.classList.remove('col-6');
+        toolsAdvanced.classList.add('col-2');
+        chevronIngr.classList.remove('chevronIngredients-rotate');
+        chevronTools.classList.remove('chevronTools-rotate');
 
-// function listAppliances(recipes) {
-//     // au click input apprareils passe à une largeur col-6
-//     appliancesInputGroup.addEventListener('click', () => {
-//         // listIngredientsDOM.classList.add('off');
-//         // listToolsDOM.classList.add('off');
-//         // ingredientsAdvanced.classList.remove('col-6');
-//         // toolsAdvanced.classList.remove('col-6');
-//         // appliancesAdvanced.classList.remove('col-2');
-//         if (advancedSearchDOM.classList.contains('col-lg-5')) {
-//             advancedSearchDOM.classList.remove('col-lg-5');
-//         } else {
-//             advancedSearchDOM.classList.add('col-lg-5');
-//         }
-//         if (appliancesAdvanced.classList.contains('col')) {
-//             appliancesAdvanced.classList.add('col-6');
-//             appliancesAdvanced.classList.remove('col');
-//         } else {
-//             appliancesAdvanced.classList.remove('col-6');
-//             appliancesAdvanced.classList.add('col');
-//         }
-//         if (ingredientsAdvanced.classList.contains('col')) {
-//             ingredientsAdvanced.classList.remove('col');
-//             ingredientsAdvanced.classList.add('col-2');
-//         } else {
-//             ingredientsAdvanced.classList.add('col');
-//             ingredientsAdvanced.classList.remove('col-2');
-//         }
-//         if (toolsAdvanced.classList.contains('col')) {
-//             toolsAdvanced.classList.remove('col');
-//             toolsAdvanced.classList.add('col-2');
-//         } else {
-//             toolsAdvanced.classList.add('col');
-//             toolsAdvanced.classList.remove('col-2');
-//         }
-//         if (chevron.classList.contains('chevronDown')) {
-//             chevron.classList.add('chevronDown-rotate');
-//             chevron.classList.remove('chevronDown');
-//         } else {
-//             chevron.classList.remove('chevronDown-rotate');
-//             chevron.classList.add('chevronDown');
-//         }
-//         //tags display none
-//         if (listAppliancesDOM.classList.contains('off')) {
-//             listAppliancesDOM.classList.remove('off');
-//         } else {
-//             listAppliancesDOM.classList.add('off');
-//         }
-//     });
+        if (appliancesAdvanced.classList.contains('col-2')) {
+            appliancesAdvanced.classList.add('col-6');
+            appliancesAdvanced.classList.remove('col-2');
+        } else {
+            appliancesAdvanced.classList.remove('col-6');
+            appliancesAdvanced.classList.add('col-2');
+        }
+        if (chevronAppliances.classList.contains('chevronAppliances')) {
+            chevronAppliances.classList.add('chevronAppliances-rotate');
+            chevronAppliances.classList.remove('chevronAppliances');
+        } else {
+            chevronAppliances.classList.remove('chevronAppliances-rotate');
+            chevronAppliances.classList.add('chevronAppliances');
+        }
+        //tags display none
+        if (listAppliancesDOM.classList.contains('off')) {
+            listAppliancesDOM.classList.remove('off');
+        } else {
+            listAppliancesDOM.classList.add('off');
+        }
+    });
 
-//     // application du filtrage des doublons du json
-//     const { ingredients, appliances, tools } = filterArray(recipes);
-//     console.log(appliances);
-//     const ul = document.createElement('ul');
-//     ul.className = 'd-flex align-content-around flex-wrap row row-cols-3';
-//     ul.id = 'listAppliances__ul';
-//     appliances.forEach((appliance) => {
-//         const li = document.createElement('li');
-//         li.innerHTML = appliance;
-//         ul.appendChild(li);
-//         listAppliancesDOM.append(ul);
-//     });
-//     // console.log(recipe);
-//     // recipes.forEach((recipe) => {
-//     //     recipe.ingredients.forEach((ingredient) => {
-//     //         const li = document.createElement('li');
-//     //         li.innerHTML = ingredient.ingredient;
-//     //         ul.appendChild(li);
-//     //         listIngredientsDOM.append(ul);
-//     //     });
-//     //     // // console.log(recipe);
-//     // });
-// }
+    // application du filtrage des doublons du json
+    const { ingredients, appliances, tools } = filterArray(recipes);
+    console.log(appliances);
+    const ul = document.createElement('ul');
+    ul.className = 'd-flex align-content-around flex-wrap row row-cols-3';
+    ul.id = 'listAppliances__ul';
+    appliances.forEach((appliance) => {
+        const li = document.createElement('li');
+        li.innerHTML = appliance;
+        ul.appendChild(li);
+        listAppliancesDOM.append(ul);
+    });
+}
+
+// Ustensiles
+const toolsInputGroup = document.getElementById('tools');
+
+function listTools(recipes) {
+    // au click input ustensiles passe à une largeur col-6
+    toolsInputGroup.addEventListener('click', () => {
+        //gére la widht si l'on clique d'un input à un autre input
+        listIngredientsDOM.classList.add('off');
+        listAppliancesDOM.classList.add('off');
+        ingredientsAdvanced.classList.remove('col-6');
+        ingredientsAdvanced.classList.add('col-2');
+        appliancesAdvanced.classList.remove('col-6');
+        appliancesAdvanced.classList.add('col-2');
+        chevronIngr.classList.remove('chevronIngredients-rotate');
+        chevronAppliances.classList.remove('chevronAppliances-rotate');
+
+        if (toolsAdvanced.classList.contains('col-2')) {
+            toolsAdvanced.classList.add('col-6');
+            toolsAdvanced.classList.remove('col-2');
+        } else {
+            toolsAdvanced.classList.remove('col-6');
+            toolsAdvanced.classList.add('col-2');
+        }
+        if (chevronTools.classList.contains('chevronTools')) {
+            chevronTools.classList.add('chevronTools-rotate');
+            chevronTools.classList.remove('chevronTools');
+        } else {
+            chevronTools.classList.remove('chevronTools-rotate');
+            chevronTools.classList.add('chevronTools');
+        }
+        //tags display none
+        if (listToolsDOM.classList.contains('off')) {
+            listToolsDOM.classList.remove('off');
+        } else {
+            listToolsDOM.classList.add('off');
+        }
+    });
+
+    // application du filtrage des doublons du json
+    const { ingredients, appliances, tools } = filterArray(recipes);
+    console.log(tools);
+    const ul = document.createElement('ul');
+    ul.className = 'd-flex align-content-around flex-wrap row row-cols-3';
+    ul.id = 'listTools__ul';
+    tools.forEach((tool) => {
+        const li = document.createElement('li');
+        li.innerHTML = tool;
+        ul.appendChild(li);
+        listToolsDOM.append(ul);
+    });
+}
