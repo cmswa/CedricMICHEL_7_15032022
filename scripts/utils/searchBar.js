@@ -63,6 +63,7 @@ function filteredRecipes(recipes) {
             if (result.length === 0) {
                 cardList.innerHTML = 'Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.';
             }
+            console.log(result);
             displayData(result);
         }
         if (e.target.value.length < 3) {

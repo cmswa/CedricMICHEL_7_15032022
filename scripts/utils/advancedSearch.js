@@ -8,7 +8,7 @@ const chevronAppliances = document.querySelector('.chevronAppliances');
 const chevronTools = document.querySelector('.chevronTools');
 const listIngredientsDOM = document.getElementById('listIngredients');
 
-// Ingrédients
+// liste des ingrédients
 function listIngredients(recipes) {
     // au click input ingrédients passe à une largeur col-6
     ingredientsInputGroup.addEventListener('click', () => {
@@ -68,7 +68,7 @@ function listIngredients(recipes) {
     // });
 }
 
-// Appareils
+// liste des appareils
 const appliancesInputGroup = document.getElementById('appliances');
 const listAppliancesDOM = document.getElementById('listAppliances');
 const listToolsDOM = document.getElementById('listTools');
@@ -122,7 +122,7 @@ function listAppliances(recipes) {
     });
 }
 
-// Ustensiles
+// liste des ustensiles
 const toolsInputGroup = document.getElementById('tools');
 
 function listTools(recipes) {
@@ -171,5 +171,69 @@ function listTools(recipes) {
         li.innerHTML = tool;
         ul.appendChild(li);
         listToolsDOM.append(ul);
+    });
+}
+
+// recherche dans les listes tags avec input
+function listenOnInputs(recipes) {
+    const { ingredients, appliances, tools } = filterArray(recipes);
+
+    const inputToolsDOM = document.getElementById('inputTools');
+    inputToolsDOM.addEventListener('keyup', (e) => {
+        let results = [];
+        listToolsDOM.innerHTML = '';
+        const toolsResearch = e.target.value.toLowerCase();
+        results = tools.filter((tool) => {
+            return tool.toLowerCase().includes(toolsResearch);
+        });
+        const ul = document.createElement('ul');
+        ul.className = 'd-flex align-content-around flex-wrap row row-cols-3';
+        ul.id = 'listTools__ul';
+        results.forEach((tool) => {
+            const li = document.createElement('li');
+            li.innerHTML = tool;
+            ul.appendChild(li);
+            listToolsDOM.append(ul);
+        });
+    });
+
+    const inputAppliancesDOM = document.getElementById('inputAppliances');
+    inputAppliancesDOM.addEventListener('keyup', (e) => {
+        let results = [];
+        listAppliancesDOM.innerHTML = '';
+        const appliancesResearch = e.target.value.toLowerCase();
+        results = appliances.filter((appliance) => {
+            return appliance.toLowerCase().includes(appliancesResearch);
+        });
+        const ul = document.createElement('ul');
+        ul.className = 'd-flex align-content-around flex-wrap row row-cols-3';
+        ul.id = 'listAppliances__ul';
+        results.forEach((appliance) => {
+            const li = document.createElement('li');
+            li.innerHTML = appliance;
+            ul.appendChild(li);
+            listAppliancesDOM.append(ul);
+        });
+    });
+
+    const inputIngredientsDOM = document.getElementById('inputIngredients');
+    inputIngredientsDOM.addEventListener('keyup', (e) => {
+        let results = [];
+        listIngredientsDOM.innerHTML = '';
+        const ingredientsResearch = e.target.value.toLowerCase();
+        results = ingredients.filter((ingredient) => {
+            return ingredient.toLowerCase().includes(ingredientsResearch);
+        });
+        const ul = document.createElement('ul');
+        ul.className = 'd-flex align-content-around flex-wrap row row-cols-3';
+        ul.id = 'Ingredients__ul';
+        results.forEach((ingredient) => {
+            const li = document.createElement('li');
+            li.innerHTML = ingredient;
+            ul.appendChild(li);
+            listIngredientsDOM.append(ul);
+        });
+        // cardList.innerHTML = '';
+        console.log(results);
     });
 }
