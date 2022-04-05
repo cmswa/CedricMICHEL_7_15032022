@@ -233,7 +233,17 @@ function listenOnInputs(recipes) {
             ul.appendChild(li);
             listIngredientsDOM.append(ul);
         });
-        // cardList.innerHTML = '';
-        console.log(results);
     });
+}
+
+//ouverture de la modal
+// function displayModal() {
+//     modal.style.display = 'block';
+//     document.body.style.overflowY = 'hidden';
+// }
+
+//fermeture d'un tag selectedTags 
+function closeTag() {
+    const selectedTagsIngredientsLi = document.querySelector('.selectedTagsIngredients');
+    selectedTagsIngredientsLi.style.display = 'none';
 }
