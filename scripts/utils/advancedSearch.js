@@ -42,6 +42,7 @@ function listIngredients(recipes) {
         } else {
             listIngredientsDOM.classList.add('off');
         }
+        createTagsUnderBar();
     });
 
     // application du filtrage des doublons du json
@@ -52,6 +53,7 @@ function listIngredients(recipes) {
     ul.id = 'listIngredients__ul';
     ingredients.forEach((ingr) => {
         const li = document.createElement('li');
+        li.className = 'listIngredients__li';
         li.innerHTML = ingr;
         ul.appendChild(li);
         listIngredientsDOM.append(ul);
@@ -116,6 +118,7 @@ function listAppliances(recipes) {
     ul.id = 'listAppliances__ul';
     appliances.forEach((appliance) => {
         const li = document.createElement('li');
+        li.className = 'listAppliances__li';
         li.innerHTML = appliance;
         ul.appendChild(li);
         listAppliancesDOM.append(ul);
@@ -168,6 +171,7 @@ function listTools(recipes) {
     ul.id = 'listTools__ul';
     tools.forEach((tool) => {
         const li = document.createElement('li');
+        li.className = 'listTools__li';
         li.innerHTML = tool;
         ul.appendChild(li);
         listToolsDOM.append(ul);
@@ -191,6 +195,7 @@ function listenOnInputs(recipes) {
         ul.id = 'listTools__ul';
         results.forEach((tool) => {
             const li = document.createElement('li');
+            li.className = 'listTools__li';
             li.innerHTML = tool;
             ul.appendChild(li);
             listToolsDOM.append(ul);
@@ -210,6 +215,7 @@ function listenOnInputs(recipes) {
         ul.id = 'listAppliances__ul';
         results.forEach((appliance) => {
             const li = document.createElement('li');
+            li.className = 'listAppliances__li';
             li.innerHTML = appliance;
             ul.appendChild(li);
             listAppliancesDOM.append(ul);
@@ -226,9 +232,10 @@ function listenOnInputs(recipes) {
         });
         const ul = document.createElement('ul');
         ul.className = 'd-flex align-content-around flex-wrap row row-cols-3';
-        ul.id = 'Ingredients__ul';
+        ul.id = 'listIngredients__ul';
         results.forEach((ingredient) => {
             const li = document.createElement('li');
+            li.className = 'listIngredients__li';
             li.innerHTML = ingredient;
             ul.appendChild(li);
             listIngredientsDOM.append(ul);
@@ -239,11 +246,12 @@ function listenOnInputs(recipes) {
 //ouverture de la modal
 // function displayModal() {
 //     modal.style.display = 'block';
-//     document.body.style.overflowY = 'hidden';
 // }
 
-//fermeture d'un tag selectedTags 
+//fermeture d'un tag selectedTags
 function closeTag() {
-    const selectedTagsIngredientsLi = document.querySelector('.selectedTagsIngredients');
+    const selectedTagsIngredientsLi = document.querySelector(
+        '.selectedTagsIngredients'
+    );
     selectedTagsIngredientsLi.style.display = 'none';
 }
