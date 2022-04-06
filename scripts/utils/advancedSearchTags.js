@@ -28,6 +28,4 @@ function createTagsUnderBar() {
     ul.append(li);
     aside.append(ul);
     searchBarContainer.append(aside);
-
 }
-

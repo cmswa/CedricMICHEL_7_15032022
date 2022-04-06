@@ -27,14 +27,20 @@ function filterArray(recipes) {
         ingredients = [
             ...new Set([
                 ...ingredients,
-                ...recipe.ingredients.map((i) => i.ingredient),
+                ...recipe.ingredients.map((i) =>
+                    i.ingredient
+                        .toLowerCase() //retourne la chaîne de caractères courante en minuscules (pour éviter les doublons avec une majuscule)
+                        //https://www.delftstack.com/fr/howto/javascript/how-to-capitalize-the-first-letter-of-a-string-in-javascript/
+                        .replace(/^./, i.ingredient[0].toUpperCase()) /* /^./ représente la première lettre de la chaîne de caractères */
+                ),
             ]),
         ].sort();
+
         appliances = [
-            ...new Set([...appliances, ...[recipe.appliance]]),
+            ...new Set([...appliances, ...[recipe.appliance.toLowerCase().replace(/^./, recipe.appliance[0].toUpperCase())]]),
         ].sort();
         tools = [
-            ...new Set([...tools, ...recipe.ustensils.map((u) => u)]),
+            ...new Set([...tools, ...recipe.ustensils.map((u) => u.toLowerCase().replace(/^./, u[0].toUpperCase()))]),
         ].sort();
     });
     // console.log(ingredients);
