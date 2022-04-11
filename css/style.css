@@ -180,6 +180,19 @@ li span {
 
 .selectedTagsIngredients {
     background-color: #3282f7;
+}
+
+.selectedTagsAppliances {
+    background-color: #68d9a4;
+}
+
+.selectedTagsTools {
+    background-color: #ed6454;
+}
+
+.selectedTagsAppliances,
+.selectedTagsIngredients,
+.selectedTagsTools {
     color: white;
     padding: 0.5em 1.3em;
     font-size: 14px;
@@ -199,6 +212,8 @@ li span {
     margin-bottom: 0;
 }
 
-.listIngredients__li {
+.listIngredients__li,
+.listAppliances__li,
+.listTools__li {
     cursor: pointer;
 }
