@@ -9,7 +9,7 @@
                 </aside> */
 
 const searchBarContainer = document.querySelector('.searchBar');
-function createTagsUnderBar() {
+function createTagsUnderBar(recipes) {
     const aside = document.createElement('aside');
     aside.className = 'selectedTags';
     // aside.className = 'selectedTags off';
@@ -18,19 +18,20 @@ function createTagsUnderBar() {
     aside.append(ul);
     searchBarContainer.append(aside);
 
-    listenOnIngredientsInput();
-    listenOnAppliancesInput();
-    listenOnToolsInput();
+    listenOnIngredientsInput(recipes);
+    listenOnAppliancesInput(recipes);
+    listenOnToolsInput(recipes);
 }
 
 // [{ nom: 'Pomme de terre', type: 'ingredient'}, { nom: 'spatule', type:'ustensile'}]
 
 const selectedTagsIngredient = [];
-function listenOnIngredientsInput() {
+// ajout des tags sélectionnés "ingrédients" qui apparaissent sous la recherche principale
+function listenOnIngredientsInput(recipes) {
     const ingredientsLi = document.querySelectorAll('.listIngredients__li');
     ingredientsLi.forEach((item) => {
         item.addEventListener('click', () => {
-            selectedTagsIngredient.push(item.textContent);
+            selectedTagsIngredient.push(item.textContent.toLowerCase()); // tableau des tags ingrédients sélectionnés
             const li = document.createElement('li');
             li.classList.add('selectedTagsIngredients');
             li.classList.add('tag');
@@ -47,16 +48,19 @@ function listenOnIngredientsInput() {
             selectedTags__ulDOM.append(li);
             console.log(selectedTagsIngredient);
             // createTagsUnderBar(recipes);
+
+            researchOnTags(recipes);
         });
     });
 }
 
 const selectedTagsAppliance = [];
-function listenOnAppliancesInput() {
+// ajout des tags sélectionnés "appareils" qui apparaissent sous la recherche principale
+function listenOnAppliancesInput(recipes) {
     const appliancesLi = document.querySelectorAll('.listAppliances__li');
     appliancesLi.forEach((item) => {
         item.addEventListener('click', () => {
-            selectedTagsAppliance.push(item.textContent);
+            selectedTagsAppliance.push(item.textContent.toLowerCase()); // tableau des tags appareils sélectionnés
             const li = document.createElement('li');
             li.classList.add('selectedTagsAppliances');
             li.classList.add('tag');
@@ -73,16 +77,19 @@ function listenOnAppliancesInput() {
             selectedTags__ulDOM.append(li);
             console.log(selectedTagsAppliance);
             // createTagsUnderBar(recipes);
+
+            researchOnTags(recipes);
         });
     });
 }
 
 const selectedTagsTool = [];
-function listenOnToolsInput() {
+// ajout des tags sélectionnés "outils" qui apparaissent sous la recherche principale
+function listenOnToolsInput(recipes) {
     const toolsLi = document.querySelectorAll('.listTools__li');
     toolsLi.forEach((item) => {
         item.addEventListener('click', () => {
-            selectedTagsTool.push(item.textContent);
+            selectedTagsTool.push(item.textContent.toLowerCase()); // tableau des tags outils sélectionnés
             const li = document.createElement('li');
             li.classList.add('selectedTagsTools');
             li.classList.add('tag');
@@ -99,6 +106,25 @@ function listenOnToolsInput() {
             selectedTags__ulDOM.append(li);
             console.log(selectedTagsTool);
             // createTagsUnderBar(recipes);
+
+            researchOnTags(recipes);
         });
     });
 }
+
+// filtrer les résultats au click des tags
+function researchOnTags(recipes) {
+    const result = recipes.filter((recipe) => {
+        return(recipe.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase().includes(selectedTagsIngredient))
+        && recipe.appliance.toLowerCase().includes(selectedTagsAppliance)
+        && recipe.ustensils.some(ustensil => ustensil.toLowerCase().includes(selectedTagsTool))
+        );
+    });
+    if (result.length === 0) {
+        cardList.innerHTML = '';
+        cardList.innerHTML = 'Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.';
+    } else {
+        cardList.innerHTML = '';
+        displayData(result);
+    }
+};

@@ -64,7 +64,7 @@ async function init() {
     listAppliances(recipes);
     listTools(recipes);
     listenOnInputs(recipes);
-    createTagsUnderBar();
+    createTagsUnderBar(recipes);
 }
 
 init();

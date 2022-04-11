@@ -243,10 +243,3 @@ function listenOnInputs(recipes) {
     });
 }
 
-//fermeture d'un tag selectedTags
-// function closeTag() {
-//     const selectedTagsIngredientsLi = document.querySelector(
-//         '.selectedTagsIngredients'
-//     );
-//     selectedTagsIngredientsLi.style.display = 'none';
-// }
