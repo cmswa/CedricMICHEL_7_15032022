@@ -42,7 +42,7 @@ function listIngredients(recipes) {
         } else {
             listIngredientsDOM.classList.add('off');
         }
-        createTagsUnderBar();
+        // createTagsUnderBar();
     });
 
     // application du filtrage des doublons du json
@@ -243,15 +243,10 @@ function listenOnInputs(recipes) {
     });
 }
 
-//ouverture de la modal
-// function displayModal() {
-//     modal.style.display = 'block';
-// }
-
 //fermeture d'un tag selectedTags
-function closeTag() {
-    const selectedTagsIngredientsLi = document.querySelector(
-        '.selectedTagsIngredients'
-    );
-    selectedTagsIngredientsLi.style.display = 'none';
-}
+// function closeTag() {
+//     const selectedTagsIngredientsLi = document.querySelector(
+//         '.selectedTagsIngredients'
+//     );
+//     selectedTagsIngredientsLi.style.display = 'none';
+// }

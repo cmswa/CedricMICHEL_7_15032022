@@ -198,3 +198,7 @@ li span {
     margin-top: 1.5em;
     margin-bottom: 0;
 }
+
+.listIngredients__li {
+    cursor: pointer;
+}
