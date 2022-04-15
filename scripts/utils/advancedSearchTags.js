@@ -142,5 +142,5 @@ function researchOnTags(recipes) {
     }
     initializeFilterAppliances(result); // filtrer les tags au click des tags
     initializeFilterIngredients(result);
-
+    initializeFilterTools(result);
 };

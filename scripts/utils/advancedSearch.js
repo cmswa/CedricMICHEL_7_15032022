@@ -161,10 +161,15 @@ function listTools(recipes) {
             listToolsDOM.classList.add('off');
         }
     });
+    initializeFilterTools(recipes);
+}
 
-    // application du filtrage des doublons du json
+// initialiser et mettre à jour les tags restant pour ustensiles
+function initializeFilterTools(recipes) {
+ // application du filtrage des doublons du json
     const { ingredients, appliances, tools } = filterArray(recipes);
     console.log(tools);
+    listToolsDOM.innerHTML = '';
     const ul = document.createElement('ul');
     ul.className = 'd-flex align-content-around flex-wrap row row-cols-3';
     ul.id = 'listTools__ul';
@@ -173,8 +178,8 @@ function listTools(recipes) {
         li.className = 'listTools__li';
         li.innerHTML = tool;
         ul.appendChild(li);
-        listToolsDOM.append(ul);
     });
+    listToolsDOM.append(ul);
 }
 
 // recherche dans les listes tags avec input
