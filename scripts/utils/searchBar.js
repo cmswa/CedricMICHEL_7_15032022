@@ -64,10 +64,12 @@ function filteredRecipes(recipes) {
                 cardList.innerHTML = 'Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.';
             }
             displayData(result);
+            // listenOnInputs(result);
         }
         if (e.target.value.length < 3) {
             cardList.innerHTML = '';
             displayData(recipes);
+            // listenOnInputs(recipes);
         }
     });
 }

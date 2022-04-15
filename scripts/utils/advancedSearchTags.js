@@ -30,26 +30,29 @@ const selectedTagsIngredient = [];
 function listenOnIngredientsInput(recipes) {
     const ingredientsLi = document.querySelectorAll('.listIngredients__li');
     ingredientsLi.forEach((item) => {
-        item.addEventListener('click', () => {
-            selectedTagsIngredient.push(item.textContent.toLowerCase()); // tableau des tags ingrédients sélectionnés
-            const li = document.createElement('li');
-            li.classList.add('selectedTagsIngredients');
-            li.classList.add('tag');
-            const close = document.createElement('i');
-            close.className = 'far fa-times-circle';
-            close.content = '\f057';
-            close.setAttribute('type', 'button');
-            close.setAttribute('aria-label', 'Close');
-            // fermeture avec la croix d'un tag selectedTags
-            close.setAttribute('onclick', "this.parentElement.style.display = 'none';");
-            li.textContent = item.textContent;
-            li.append(close);
-            const selectedTags__ulDOM = document.querySelector('.selectedTags__ul');
-            selectedTags__ulDOM.append(li);
-            console.log(selectedTagsIngredient);
-            // createTagsUnderBar(recipes);
+        item.addEventListener('click', () => { // ne pas pouvoir ajouter 2 fois le même tag; renvoie un booléen avec la condition if(!)
+            if (! selectedTagsIngredient.some(t => t === item.textContent.toLowerCase())) {
 
-            researchOnTags(recipes);
+                selectedTagsIngredient.push(item.textContent.toLowerCase()); // tableau des tags ingrédients sélectionnés
+                const li = document.createElement('li');
+                li.classList.add('selectedTagsIngredients');
+                li.classList.add('tag');
+                const close = document.createElement('i');
+                close.className = 'far fa-times-circle';
+                close.content = '\f057';
+                close.setAttribute('type', 'button');
+                close.setAttribute('aria-label', 'Close');
+                // fermeture avec la croix d'un tag selectedTags
+                close.setAttribute('onclick', "this.parentElement.style.display = 'none';");
+                li.textContent = item.textContent;
+                li.append(close);
+                const selectedTags__ulDOM = document.querySelector('.selectedTags__ul');
+                selectedTags__ulDOM.append(li);
+                console.log(selectedTagsIngredient);
+                // createTagsUnderBar(recipes);
+
+                researchOnTags(recipes);
+            }
         });
     });
 }
@@ -60,25 +63,32 @@ function listenOnAppliancesInput(recipes) {
     const appliancesLi = document.querySelectorAll('.listAppliances__li');
     appliancesLi.forEach((item) => {
         item.addEventListener('click', () => {
-            selectedTagsAppliance.push(item.textContent.toLowerCase()); // tableau des tags appareils sélectionnés
-            const li = document.createElement('li');
-            li.classList.add('selectedTagsAppliances');
-            li.classList.add('tag');
-            const close = document.createElement('i');
-            close.className = 'far fa-times-circle';
-            close.content = '\f057';
-            close.setAttribute('type', 'button');
-            close.setAttribute('aria-label', 'Close');
-            // fermeture avec la croix d'un tag selectedTags
-            close.setAttribute('onclick', "this.parentElement.style.display = 'none';");
-            li.textContent = item.textContent;
-            li.append(close);
-            const selectedTags__ulDOM = document.querySelector('.selectedTags__ul');
-            selectedTags__ulDOM.append(li);
-            console.log(selectedTagsAppliance);
-            // createTagsUnderBar(recipes);
+            // console.log(selectedTagsAppliance);
+            // console.log(item.textContent.toLowerCase());
+            // console.log(selectedTagsAppliance.some(t => t === item.textContent.toLowerCase()));
+            // ne pas pouvoir ajouter 2 fois le même tag; renvoie un booléen avec la condition if(!)
+            if (! selectedTagsAppliance.some(t => t === item.textContent.toLowerCase())) {
 
-            researchOnTags(recipes);
+                selectedTagsAppliance.push(item.textContent.toLowerCase()); // tableau des tags appareils sélectionnés
+                const li = document.createElement('li');
+                li.classList.add('selectedTagsAppliances');
+                li.classList.add('tag');
+                const close = document.createElement('i');
+                close.className = 'far fa-times-circle';
+                close.content = '\f057';
+                close.setAttribute('type', 'button');
+                close.setAttribute('aria-label', 'Close');
+                // fermeture avec la croix d'un tag selectedTags
+                close.setAttribute('onclick', "this.parentElement.style.display = 'none';");
+                li.textContent = item.textContent;
+                li.append(close);
+                const selectedTags__ulDOM = document.querySelector('.selectedTags__ul');
+                selectedTags__ulDOM.append(li);
+                console.log(selectedTagsAppliance);
+                // createTagsUnderBar(recipes);
+
+                researchOnTags(recipes);
+            };
         });
     });
 }
@@ -88,35 +98,38 @@ const selectedTagsTool = [];
 function listenOnToolsInput(recipes) {
     const toolsLi = document.querySelectorAll('.listTools__li');
     toolsLi.forEach((item) => {
-        item.addEventListener('click', () => {
-            selectedTagsTool.push(item.textContent.toLowerCase()); // tableau des tags outils sélectionnés
-            const li = document.createElement('li');
-            li.classList.add('selectedTagsTools');
-            li.classList.add('tag');
-            const close = document.createElement('i');
-            close.className = 'far fa-times-circle';
-            close.content = '\f057';
-            close.setAttribute('type', 'button');
-            close.setAttribute('aria-label', 'Close');
-            // fermeture avec la croix d'un tag selectedTags
-            close.setAttribute('onclick', "this.parentElement.style.display = 'none';");
-            li.textContent = item.textContent;
-            li.append(close);
-            const selectedTags__ulDOM = document.querySelector('.selectedTags__ul');
-            selectedTags__ulDOM.append(li);
-            console.log(selectedTagsTool);
-            // createTagsUnderBar(recipes);
+        item.addEventListener('click', () => { // ne pas pouvoir ajouter 2 fois le même tag; renvoie un booléen avec la condition if(!)
+            if (! selectedTagsTool.some(t => t === item.textContent.toLowerCase())) {
 
-            researchOnTags(recipes);
+                selectedTagsTool.push(item.textContent.toLowerCase()); // tableau des tags outils sélectionnés
+                const li = document.createElement('li');
+                li.classList.add('selectedTagsTools');
+                li.classList.add('tag');
+                const close = document.createElement('i');
+                close.className = 'far fa-times-circle';
+                close.content = '\f057';
+                close.setAttribute('type', 'button');
+                close.setAttribute('aria-label', 'Close');
+                // fermeture avec la croix d'un tag selectedTags
+                close.setAttribute('onclick', "this.parentElement.style.display = 'none';");
+                li.textContent = item.textContent;
+                li.append(close);
+                const selectedTags__ulDOM = document.querySelector('.selectedTags__ul');
+                selectedTags__ulDOM.append(li);
+                console.log(selectedTagsTool);
+                // createTagsUnderBar(recipes);
+
+                researchOnTags(recipes);
+            }
         });
     });
 }
 
-// filtrer les résultats au click des tags
+// filtrer les résultats des recettes au click des tags
 function researchOnTags(recipes) {
     const result = recipes.filter((recipe) => {
-        return(recipe.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase().includes(selectedTagsIngredient))
-        && recipe.appliance.toLowerCase().includes(selectedTagsAppliance)
+        return(recipe.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase().includes(selectedTagsIngredient)) 
+        && recipe.appliance.toLowerCase().includes(selectedTagsAppliance) 
         && recipe.ustensils.some(ustensil => ustensil.toLowerCase().includes(selectedTagsTool))
         );
     });
@@ -127,4 +140,7 @@ function researchOnTags(recipes) {
         cardList.innerHTML = '';
         displayData(result);
     }
+    initializeFilterAppliances(result); // filtrer les tags au click des tags
+    initializeFilterIngredients(result);
+
 };

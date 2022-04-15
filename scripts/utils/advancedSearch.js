@@ -42,32 +42,26 @@ function listIngredients(recipes) {
         } else {
             listIngredientsDOM.classList.add('off');
         }
-        // createTagsUnderBar();
     });
+    initializeFilterIngredients(recipes);
+}
 
-    // application du filtrage des doublons du json
-    const { ingredients, appliances, tools } = filterArray(recipes);
-    console.log(ingredients);
-    const ul = document.createElement('ul');
-    ul.className = 'd-flex align-content-around flex-wrap row row-cols-3';
-    ul.id = 'listIngredients__ul';
-    ingredients.forEach((ingr) => {
-        const li = document.createElement('li');
-        li.className = 'listIngredients__li';
-        li.innerHTML = ingr;
-        ul.appendChild(li);
-        listIngredientsDOM.append(ul);
-    });
-    // console.log(recipe);
-    // recipes.forEach((recipe) => {
-    //     recipe.ingredients.forEach((ingredient) => {
-    //         const li = document.createElement('li');
-    //         li.innerHTML = ingredient.ingredient;
-    //         ul.appendChild(li);
-    //         listIngredientsDOM.append(ul);
-    //     });
-    //     // // console.log(recipe);
-    // });
+// initialiser et mettre à jour les tags restant pour ingrédients
+function initializeFilterIngredients(recipes) {
+  // application du filtrage des doublons du json
+  const { ingredients, appliances, tools } = filterArray(recipes);
+  console.log(ingredients);
+  listIngredientsDOM.innerHTML = '';
+  const ul = document.createElement('ul');
+  ul.className = 'd-flex align-content-around flex-wrap row row-cols-3';
+  ul.id = 'listIngredients__ul';
+  ingredients.forEach((ingr) => {
+      const li = document.createElement('li');
+      li.className = 'listIngredients__li';
+      li.innerHTML = ingr;
+      ul.appendChild(li);
+  });
+  listIngredientsDOM.append(ul);
 }
 
 // liste des appareils
@@ -109,10 +103,15 @@ function listAppliances(recipes) {
             listAppliancesDOM.classList.add('off');
         }
     });
+    initializeFilterAppliances(recipes);
+}
 
+// initialiser et mettre à jour les tags restant pour appareils
+function initializeFilterAppliances(recipes) {
     // application du filtrage des doublons du json
     const { ingredients, appliances, tools } = filterArray(recipes);
     console.log(appliances);
+    listAppliancesDOM.innerHTML = '';
     const ul = document.createElement('ul');
     ul.className = 'd-flex align-content-around flex-wrap row row-cols-3';
     ul.id = 'listAppliances__ul';
@@ -121,8 +120,8 @@ function listAppliances(recipes) {
         li.className = 'listAppliances__li';
         li.innerHTML = appliance;
         ul.appendChild(li);
-        listAppliancesDOM.append(ul);
     });
+    listAppliancesDOM.append(ul);
 }
 
 // liste des ustensiles
