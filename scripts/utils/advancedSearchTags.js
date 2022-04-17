@@ -1,4 +1,3 @@
-// tags sélectionnés qui apparaissent sous la recherche principale
 /* <aside class="selectedTags off">
                     <ul class="d-flex align-content-around flex-wrap col-6 selectedTags__ul">
                         <li class="selectedTagsIngredients">
@@ -8,7 +7,10 @@
                     </ul>
                 </aside> */
 
+/****** traitement des tags sélectionnés qui apparaissent sous la recherche principale ****/           
+
 const searchBarContainer = document.querySelector('.searchBar');
+
 function createTagsUnderBar(recipes) {
     const aside = document.createElement('aside');
     aside.className = 'selectedTags';
@@ -22,8 +24,6 @@ function createTagsUnderBar(recipes) {
     listenOnAppliancesInput(recipes);
     listenOnToolsInput(recipes);
 }
-
-// [{ nom: 'Pomme de terre', type: 'ingredient'}, { nom: 'spatule', type:'ustensile'}]
 
 const selectedTagsIngredient = [];
 // ajout des tags sélectionnés "ingrédients" qui apparaissent sous la recherche principale
@@ -139,8 +139,8 @@ function researchOnTags(recipes) {
     } else {
         cardList.innerHTML = '';
         displayData(result);
-    }
-    initializeFilterAppliances(result); // filtrer les tags au click des tags
+    }   
+    initializeFilterAppliances(result); // => filtrer les tags au click des tags
     initializeFilterIngredients(result);
     initializeFilterTools(result);
 };

@@ -1,3 +1,5 @@
+/****** traitement des tags des champs de recherche avancée ****/           
+
 const ingredientsInputGroup = document.getElementById('ingredients');
 const ingredientsAdvanced = document.querySelector('.ingredients');
 const appliancesAdvanced = document.querySelector('.appliances');
@@ -46,7 +48,7 @@ function listIngredients(recipes) {
     initializeFilterIngredients(recipes);
 }
 
-// initialiser et mettre à jour les tags restant pour ingrédients
+// initialiser liste des ingrédients
 function initializeFilterIngredients(recipes) {
   // application du filtrage des doublons du json
   const { ingredients, appliances, tools } = filterArray(recipes);
@@ -106,7 +108,7 @@ function listAppliances(recipes) {
     initializeFilterAppliances(recipes);
 }
 
-// initialiser et mettre à jour les tags restant pour appareils
+// initialiser liste des appareils
 function initializeFilterAppliances(recipes) {
     // application du filtrage des doublons du json
     const { ingredients, appliances, tools } = filterArray(recipes);
@@ -164,7 +166,7 @@ function listTools(recipes) {
     initializeFilterTools(recipes);
 }
 
-// initialiser et mettre à jour les tags restant pour ustensiles
+// initialiser liste ustensiles
 function initializeFilterTools(recipes) {
  // application du filtrage des doublons du json
     const { ingredients, appliances, tools } = filterArray(recipes);
