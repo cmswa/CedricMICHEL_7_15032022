@@ -61,6 +61,9 @@ function initializeFilterIngredients(recipes) {
       const li = document.createElement('li');
       li.className = 'listIngredients__li';
       li.innerHTML = ingr;
+      li.addEventListener('click', () => {
+        tagSelection('ingredients', ingr.toLowerCase(), recipes); 
+    });
       ul.appendChild(li);
   });
   listIngredientsDOM.append(ul);
@@ -121,6 +124,9 @@ function initializeFilterAppliances(recipes) {
         const li = document.createElement('li');
         li.className = 'listAppliances__li';
         li.innerHTML = appliance;
+        li.addEventListener('click', () => {
+            tagSelection('appliances', appliance.toLowerCase(), recipes);
+        });
         ul.appendChild(li);
     });
     listAppliancesDOM.append(ul);
@@ -179,6 +185,10 @@ function initializeFilterTools(recipes) {
         const li = document.createElement('li');
         li.className = 'listTools__li';
         li.innerHTML = tool;
+        li.addEventListener('click', () => {
+            console.log(tool);
+            tagSelection('tools', tool.toLowerCase(), recipes);
+        });
         ul.appendChild(li);
     });
     listToolsDOM.append(ul);
