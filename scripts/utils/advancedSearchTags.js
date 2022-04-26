@@ -137,14 +137,14 @@ function tagSelection(type, tagName, recipes) {
 
 // filtrer les résultats des recettes au click des tags
 function researchOnTags(recipes) {
-    console.log(selectedTagsIngredient);
-    console.log(recipes.map((recipe) => recipe.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase().includes(selectedTagsIngredient))));
+   
     const result = recipes.filter((recipe) => {
-        // console.log(recipe.ingredients.every(selectedTagsIngredient));
+        console.log(selectedTagsIngredient);
+        
         // return(recipe.ingredients.every((ingredient) => selectedTagsIngredient.includes(ingredient.ingredient.toLowerCase())) //.includes(selectedTagsIngredient))
-        return(recipe.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase().includes(selectedTagsIngredient)) 
-        && recipe.appliance.toLowerCase().includes(selectedTagsAppliance) 
-        && recipe.ustensils.some(ustensil => ustensil.toLowerCase().includes(selectedTagsTool)));
+        return(recipe.ingredients.some((ingredient) => selectedTagsIngredient.some((tag) => tag === ingredient.ingredient.toLowerCase())))
+        // && recipe.appliance.toLowerCase().includes(selectedTagsAppliance) 
+        // && recipe.ustensils.some(ustensil => ustensil.toLowerCase().includes(selectedTagsTool)));
     });
     console.log(result);
     if (result.length === 0) {
