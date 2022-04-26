@@ -43,7 +43,6 @@ function filterArray(recipes) {
             ...new Set([...tools, ...recipe.ustensils.map((u) => u.toLowerCase().replace(/^./, u[0].toUpperCase()))]),
         ].sort();
     });
-    // console.log(ingredients);
     return { ingredients, appliances, tools };
 }
 

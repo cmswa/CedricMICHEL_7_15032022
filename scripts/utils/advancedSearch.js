@@ -52,7 +52,6 @@ function listIngredients(recipes) {
 function initializeFilterIngredients(recipes) {
   // application du filtrage des doublons du json
   const { ingredients, appliances, tools } = filterArray(recipes);
-  console.log(ingredients);
   listIngredientsDOM.innerHTML = '';
   const ul = document.createElement('ul');
   ul.className = 'd-flex align-content-around flex-wrap row row-cols-3';
@@ -115,7 +114,6 @@ function listAppliances(recipes) {
 function initializeFilterAppliances(recipes) {
     // application du filtrage des doublons du json
     const { ingredients, appliances, tools } = filterArray(recipes);
-    console.log(appliances);
     listAppliancesDOM.innerHTML = '';
     const ul = document.createElement('ul');
     ul.className = 'd-flex align-content-around flex-wrap row row-cols-3';
@@ -176,7 +174,6 @@ function listTools(recipes) {
 function initializeFilterTools(recipes) {
  // application du filtrage des doublons du json
     const { ingredients, appliances, tools } = filterArray(recipes);
-    console.log(tools);
     listToolsDOM.innerHTML = '';
     const ul = document.createElement('ul');
     ul.className = 'd-flex align-content-around flex-wrap row row-cols-3';
@@ -186,7 +183,6 @@ function initializeFilterTools(recipes) {
         li.className = 'listTools__li';
         li.innerHTML = tool;
         li.addEventListener('click', () => {
-            console.log(tool);
             tagSelection('tools', tool.toLowerCase(), recipes);
         });
         ul.appendChild(li);

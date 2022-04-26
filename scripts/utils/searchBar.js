@@ -43,9 +43,9 @@ function filteredRecipes(recipes) {
             cardList.innerHTML = '';
             const research = e.target.value.toLowerCase(); //toLowerCase() retourne la chaîne de caractères courante en minuscules
             for (i = 0; i < recipes.length; i ++) { //tant que i est compris entre 0 et 49
-                console.log(recipes);
+                // console.log(recipes);
                 const {name, ingredients, description} = recipes[i]; //tableau d'un objet
-                console.log(recipes[i]);
+                // console.log(recipes[i]);
                 const includesInName = name.toLowerCase().includes(research); //La méthode includes() permet de déterminer si un tableau contient une valeur et renvoie true si c'est le cas, false sinon
                 const includesInDescription = description.toLowerCase().includes(research);
                 let includesInIngredients = false;
