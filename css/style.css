@@ -50,6 +50,10 @@ ul.liste {
     list-style: none;
 }
 
+.liste li {
+    flex-wrap: wrap;
+}
+
 .card-body__content {
     font-size: 12px;
     height: 68%;
@@ -67,7 +71,12 @@ ul.liste {
 .card-body__description {
     width: 44%;
     overflow: hidden;
-    height: 100%;
+    /* height: 100%; */
+    height: 92%;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 5;
 }
 
 li {
@@ -85,6 +94,7 @@ li span {
 
 .advancedSearch {
     margin: 2.5rem;
+    margin-top: 0.7em;
 }
 
 .fa-angle-down {

@@ -65,11 +65,17 @@ function filteredRecipes(recipes) {
             }
             displayData(result);
             // listenOnInputs(result);
+            initializeFilterIngredients(result);
+            initializeFilterAppliances(result);
+            initializeFilterTools(result);
         }
         if (e.target.value.length < 3) {
             cardList.innerHTML = '';
             displayData(recipes);
             // listenOnInputs(recipes);
+            initializeFilterIngredients(recipes);
+            initializeFilterAppliances(recipes);
+            initializeFilterTools(recipes);
         }
     });
 }
