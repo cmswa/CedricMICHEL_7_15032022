@@ -98,7 +98,7 @@ function tagSelection(type, tagName, recipes) {
                 if (index > -1) {
                     selectedTagsIngredient.splice(index, 1);
                 }
-                researchOnTags(recipes);
+                researchOnTags();
             });
 
         } else if (type === 'appliances') {
@@ -112,7 +112,7 @@ function tagSelection(type, tagName, recipes) {
                 if (index > -1) {
                     selectedTagsAppliance.splice(index, 1);
                 }
-                researchOnTags(recipes);
+                researchOnTags();
             });
 
         } else if (type === 'tools') {
@@ -126,27 +126,46 @@ function tagSelection(type, tagName, recipes) {
                 if (index > -1) {
                     selectedTagsTool.splice(index, 1);
                 }
-                researchOnTags(recipes);
+                researchOnTags();
             });
         }
         // createTagsUnderBar(recipes);
 
-        researchOnTags(recipes);
+        researchOnTags();
     }
 }
 
 // filtrer les résultats des recettes au click des tags
-function researchOnTags(recipes) {
-   
-    const result = recipes.filter((recipe) => {
-        console.log(selectedTagsIngredient);
-        
-        // return(recipe.ingredients.every((ingredient) => selectedTagsIngredient.includes(ingredient.ingredient.toLowerCase())) //.includes(selectedTagsIngredient))
-        return(recipe.ingredients.some((ingredient) => selectedTagsIngredient.some((tag) => tag === ingredient.ingredient.toLowerCase())))
-        // && recipe.appliance.toLowerCase().includes(selectedTagsAppliance) 
-        // && recipe.ustensils.some(ustensil => ustensil.toLowerCase().includes(selectedTagsTool)));
-    });
-    console.log(result);
+function researchOnTags() {
+// const myImage = document.querySelector('img');
+
+// fetch('flowers.jpg')
+// .then(function(response) {
+//   return response.blob();
+// })
+// .then(function(myBlob) {
+//   const objectURL = URL.createObjectURL(myBlob);
+//   myImage.src = objectURL;
+// });
+    const recipes = getRecipes();
+   console.log(selectedTagsIngredient);
+   console.log(recipes);
+   let result;
+
+   filterArray(recipes)
+    
+   if(selectedTagsIngredient.length > 0 || selectedTagsAppliance.length > 0 || selectedTagsTool.length > 0) {
+       result = recipes.filter((recipe) =>
+       selectedTagsIngredient.every((tag) =>
+           recipe.ingredients.some((ingredient) =>
+               tag === ingredient.ingredient.toLowerCase()
+           )
+       )
+       && recipe.appliance.toLowerCase().includes(selectedTagsAppliance)
+       && recipe.ustensils.some(ustensil => ustensil.toLowerCase().includes(selectedTagsTool))); 
+   } else {
+       result = recipes;
+   }
     if (result.length === 0) {
         cardList.innerHTML = '';
         cardList.innerHTML = 'Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.';
