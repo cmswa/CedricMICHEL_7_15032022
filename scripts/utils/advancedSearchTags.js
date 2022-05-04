@@ -148,14 +148,16 @@ function researchOnTags() {
 //   myImage.src = objectURL;
 // });
     const recipes = getRecipes();
-   console.log(selectedTagsIngredient);
-   console.log(recipes);
+    const jsonPath = './data/recipes.json';
+    fetch(jsonPath).then(response => response.json()).then(data => {
+
+     console.log(data.recipes)
    let result;
 
-   filterArray(recipes)
+//    filterArray(recipes)
     
    if(selectedTagsIngredient.length > 0 || selectedTagsAppliance.length > 0 || selectedTagsTool.length > 0) {
-       result = recipes.filter((recipe) =>
+       result = data.recipes.filter((recipe) =>
        selectedTagsIngredient.every((tag) =>
            recipe.ingredients.some((ingredient) =>
                tag === ingredient.ingredient.toLowerCase()
@@ -164,7 +166,7 @@ function researchOnTags() {
        && recipe.appliance.toLowerCase().includes(selectedTagsAppliance)
        && recipe.ustensils.some(ustensil => ustensil.toLowerCase().includes(selectedTagsTool))); 
    } else {
-       result = recipes;
+       result = data.recipes;
    }
     if (result.length === 0) {
         cardList.innerHTML = '';
@@ -176,4 +178,5 @@ function researchOnTags() {
     initializeFilterAppliances(result); // => filtrer les tags au click des tags
     initializeFilterIngredients(result);
     initializeFilterTools(result);
+    });
 };
