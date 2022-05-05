@@ -1,12 +1,3 @@
-/* <aside class="selectedTags off">
-                    <ul class="d-flex align-content-around flex-wrap col-6 selectedTags__ul">
-                        <li class="selectedTagsIngredients">
-                            aadddff
-                            <i type="button" class="far fa-times-circle" aria-label="Close" onclick="closeTag()"></i>
-                        </li>
-                    </ul>
-                </aside> */
-
 /****** traitement des tags sélectionnés qui apparaissent sous la recherche principale ****/
 
 const searchBarContainer = document.querySelector('.searchBar');
@@ -14,7 +5,6 @@ const searchBarContainer = document.querySelector('.searchBar');
 function createTagsUnderBar(recipes) {
     const aside = document.createElement('aside');
     aside.className = 'selectedTags';
-    // aside.className = 'selectedTags off';
     const ul = document.createElement('ul');
     ul.className = 'd-flex align-content-around flex-wrap col-6 selectedTags__ul';
     aside.append(ul);
@@ -58,8 +48,8 @@ function listenOnToolsInput(recipes) {
     });
 }
 
-// filtrer les tags sélectionnés en fonction des 3 filtres
-function tagSelection(type, tagName, recipes) {
+// filtrer les tags sélectionnés en fonction des 3 filtres (filtrer les tags entre eux)
+function tagSelection(type, tagName) {
     let array;
     if (type === 'ingredients') {
         array = selectedTagsIngredient;
@@ -72,8 +62,6 @@ function tagSelection(type, tagName, recipes) {
     if (! array.some((t) => t === tagName.toLowerCase())) { // ne pas pouvoir ajouter 2 fois le même tag; renvoie un booléen avec la condition if(!)
 
         const li = document.createElement('li');
-        // li.classList.add('selectedTagsTools');
-        // li.classList.add('tag');
         li.classList.add('tag');
         const close = document.createElement('i');
         close.className = 'far fa-times-circle';
@@ -95,9 +83,9 @@ function tagSelection(type, tagName, recipes) {
             // mettre à jour la supression d'un tag
             close.addEventListener('click', (e) => {
                 let remove = e.target.previousSibling.textContent; // previousSibling renvoie le nœud (node) précédant immédiatement le nœud courant dans la liste childNodes de son parent
-                const index = selectedTagsIngredient.indexOf(remove);
+                const index = selectedTagsIngredient.indexOf(remove); //La méthode indexOf() renvoie le premier indice pour lequel on trouve un élément donné dans un tableau
                 if (index > -1) {
-                    selectedTagsIngredient.splice(index, 1);
+                    selectedTagsIngredient.splice(index, 1); //La méthode splice() modifie le contenu d'un tableau en retirant des éléments et/ou en ajoutant de nouveaux éléments à même le tableau
                 }
                 researchOnTags();
             });
@@ -130,33 +118,27 @@ function tagSelection(type, tagName, recipes) {
                 researchOnTags();
             });
         }
-        // createTagsUnderBar(recipes);
-
         researchOnTags();
     }
 }
 
 // filtrer les résultats des recettes au click des tags
 function researchOnTags() {
-    // const myImage = document.querySelector('img');
-
-    // fetch('flowers.jpg')
-    // .then(function(response) {
-    // return response.blob();
-    // })
-    // .then(function(myBlob) {
-    // const objectURL = URL.createObjectURL(myBlob);
-    // myImage.src = objectURL;
-    // });
     const jsonPath = './data/recipes.json';
     fetch(jsonPath).then((response) => response.json()).then((data) => {
-        console.log(data.recipes);
-        let result;
+        //fetch procure un moyen facile et logique de récupérer des ressources à travers le réseau de manière asynchrone
+        //La méthode then() renvoie une promesse en attente de résolution et dont la valeur est déterminée selon les deux fonctions passées en arguments et qui seront appelées de façon asynchrone
 
+        let result;
         if (selectedTagsIngredient.length > 0 || selectedTagsAppliance.length > 0 || selectedTagsTool.length > 0) {
             result = data.recipes.filter((recipe) => selectedTagsIngredient.every((tag) => recipe.ingredients.some((ingredient) => tag === ingredient.ingredient.toLowerCase())) 
             && recipe.appliance.toLowerCase().includes(selectedTagsAppliance) 
             && recipe.ustensils.some((ustensil) => ustensil.toLowerCase().includes(selectedTagsTool)));
+            //filter() crée et retourne un nouveau tableau contenant tous les éléments du tableau d'origine qui remplissent une condition déterminée par la fonction callback
+            //every() permet de tester si tous les éléments d'un tableau vérifient une condition donnée par une fonction en argument. Cette méthode renvoie un booléen pour le résultat du test
+            //some() teste si au moins un élément du tableau passe le test implémenté par la fonction fournie. Elle renvoie un booléen indiquant le résultat du test
+            //includes() permet de déterminer si un tableau contient une valeur et renvoie true si c'est le cas, false sinon
+
         } else {
             result = data.recipes;
         }
@@ -167,7 +149,7 @@ function researchOnTags() {
             cardList.innerHTML = '';
             displayData(result);
         }
-        initializeFilterAppliances(result); // => filtrer les tags au click des tags
+        initializeFilterAppliances(result); // filtrer les tags au click des tags
         initializeFilterIngredients(result);
         initializeFilterTools(result);
     });

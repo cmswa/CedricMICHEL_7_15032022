@@ -51,11 +51,12 @@ function listIngredients(recipes) {
 // initialiser liste des ingrédients
 function initializeFilterIngredients(recipes) {
   // application du filtrage des doublons du json
-  const { ingredients, appliances, tools } = filterArray(recipes);
+  const { ingredients } = filterArray(recipes); //déstructuration
   listIngredientsDOM.innerHTML = '';
   const ul = document.createElement('ul');
   ul.className = 'd-flex align-content-around flex-wrap row row-cols-3';
   ul.id = 'listIngredients__ul';
+  //La méthode forEach() permet d'exécuter une fonction donnée sur chaque élément du tableau
   ingredients.forEach((ingr) => {
       const li = document.createElement('li');
       li.className = 'listIngredients__li';
@@ -113,7 +114,7 @@ function listAppliances(recipes) {
 // initialiser liste des appareils
 function initializeFilterAppliances(recipes) {
     // application du filtrage des doublons du json
-    const { ingredients, appliances, tools } = filterArray(recipes);
+    const { appliances } = filterArray(recipes); //déstructuration
     listAppliancesDOM.innerHTML = '';
     const ul = document.createElement('ul');
     ul.className = 'd-flex align-content-around flex-wrap row row-cols-3';
@@ -173,7 +174,7 @@ function listTools(recipes) {
 // initialiser liste ustensiles
 function initializeFilterTools(recipes) {
  // application du filtrage des doublons du json
-    const { ingredients, appliances, tools } = filterArray(recipes);
+    const { tools } = filterArray(recipes); //déstructuration
     listToolsDOM.innerHTML = '';
     const ul = document.createElement('ul');
     ul.className = 'd-flex align-content-around flex-wrap row row-cols-3';
@@ -192,7 +193,7 @@ function initializeFilterTools(recipes) {
 
 // recherche dans les listes tags avec input
 function listenOnInputs(recipes) {
-    const { ingredients, appliances, tools } = filterArray(recipes);
+    const { ingredients, appliances, tools } = filterArray(recipes); //déstructuration
 
     const inputToolsDOM = document.getElementById('inputTools');
     inputToolsDOM.addEventListener('keyup', (e) => {
